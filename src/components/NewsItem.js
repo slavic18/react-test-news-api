@@ -1,12 +1,29 @@
 import React from "react";
-export default class NewsItem extends React.Component {
+import {connect} from "react-redux";
+class NewsItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.setToFavorite = this.setToFavorite.bind(this);
+    }
+
+    setToFavorite() {
+        this.props.dispatch({
+            type: "SET_FAVORITE",
+            title: this.props.title
+        })
+    }
+
 
     render() {
         let date = new Date(this.props.publishedAt).toLocaleDateString();
         return (
-            <div className="news-item bs-callout bs-callout-info">
+            <div className={"news-item bs-callout bs-callout-info " + (this.props.activeMenu == 'favorites' && !this.props.favorite ? 'hidden' : '')}>
+                <div className="add-to-favorite">
+                    <i className={"glyphicon  " + (this.props.favorite ? " glyphicon-star" : "glyphicon-star-empty")}
+                       onClick={this.setToFavorite}>
+                    </i>
+                </div>
                 <div className="row">
-
                     <div className="col-md-4">
                         <div className="img-container">
                             <img src={this.props.urlToImage}/>
@@ -37,3 +54,11 @@ export default class NewsItem extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        activeMenu: state.news.active || 'all'
+    }
+
+}
+
+export default connect(mapStateToProps)(NewsItem);

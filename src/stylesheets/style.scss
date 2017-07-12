@@ -66,6 +66,8 @@
 }
 
 .news-item {
+  position: relative;
+  padding-top: 30px;
   .title {
     //color: #2b2b2c;
     font-size: 18px;
@@ -77,6 +79,13 @@
     line-height: 1.9rem;
     color: #656566;
     font-size: 1.3rem;
+  }
+  .add-to-favorite {
+    position: absolute;
+    top:10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
   }
 }
 
@@ -90,5 +99,10 @@
       color: #656566;
       margin-right:4px;
     }
+  }
+}
+.menu {
+  .btn {
+    margin-right: 15px;
   }
 }
