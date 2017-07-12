@@ -29,7 +29,7 @@ class App extends React.Component {
         body.onscroll = () => {
             let bottomPosition = body.scrollTop + window.innerHeight;
             if (( this.newsList.clientHeight - bottomPosition) < 200) {
-                if (this.state.allowLoad) {
+                if (this.state.allowLoad && this.props.active == 'all') {
                     this.setState({allowLoad: false});
                     this.props.dispatch({
                         type: 'FETCH_NEWS',
@@ -83,6 +83,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        active: state.news.active || 'all',
         articles: state.news.articles || [],
     };
 }

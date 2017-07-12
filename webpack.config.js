@@ -12,8 +12,8 @@ module.exports = {
         __dirname + '/' + app_root + '/index.js',
     ],
     output: {
-        path: __dirname + '/public/_js',
-        publicPath: '_js/',
+        path: __dirname + '/public/js',
+        publicPath: 'js/',
         filename: 'bundle.js',
     },
     module: {
@@ -39,7 +39,7 @@ module.exports = {
         contentBase: __dirname + '/public',
     },
     plugins: [
-        new CleanWebpackPlugin(['css/main.css', '_js/bundle.js'], {
+        new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
             root: __dirname + '/public',
             verbose: true,
             dry: false, // true for simulation
