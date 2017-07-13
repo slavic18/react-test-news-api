@@ -8,7 +8,7 @@ class Menu extends React.Component {
 
     handleMenuClick(e) {
         e.preventDefault();
-        if(e.target.dataset && e.target.dataset.key) {
+        if (e.target.dataset && e.target.dataset.key) {
             this.props.dispatch({
                 type: 'CHANGE_NEWS_TYPE',
                 data: e.target.dataset.key
